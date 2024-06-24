@@ -1,7 +1,7 @@
 initSqlJs({ locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.5.0/${filename}` })
     .then(SQL => {
         let db = new SQL.Database(); // Создаём виртуальную базу данных
-        db.exec("CREATE TABLE test (Name, Path); INSERT INTO test VALUES ('Bar#1', 'images/bar.png'), ('Bar#2', 'images/bar2.png'), ('Bar#3', 'images/image.png')"); // Заполняем таблицу тестовыми данными
+        db.exec("CREATE TABLE test (Name, Path); INSERT INTO test VALUES ('Cat', 'images/cat_bed.webp'), ('Dog', 'images/dog_lead.webp')"); // Заполняем таблицу тестовыми данными
         let stmt = db.prepare("SELECT * FROM test"); 
 
         const arr = [];
@@ -16,6 +16,6 @@ initSqlJs({ locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.
          for (let i = 0; i < arr.length; i += 1) {  
                 const img = document.createElement('img');       
                 img.src = arr[i][1];
-                container.appendChild(img).classList.add('img-fluid','rounded', 'mh-25');
+                container.appendChild(img);
           }
     });
